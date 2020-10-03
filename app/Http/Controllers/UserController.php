@@ -39,6 +39,7 @@ use Illuminate\Http\Request;
  *     )
  * )
  */
+
 class UserController extends Controller
 {
 
@@ -46,7 +47,6 @@ class UserController extends Controller
     {
         return User::all();
     }
-
 
     public function store(Request $request)
     {

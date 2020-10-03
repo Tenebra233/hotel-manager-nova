@@ -103,6 +103,112 @@
                 }
             }
         },
+        "/api/flusso-prenotazione": {
+            "post": {
+                "tags": [
+                    "flussoPrenotazione"
+                ],
+                "summary": "Create an user",
+                "description": "Create an user with name, email and password",
+                "operationId": "flussoPrenotazione",
+                "requestBody": {
+                    "description": "User info",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "roberto"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "user1@mail.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "PassWord12345"
+                                    },
+                                    "data": {
+                                        "type": "date",
+                                        "format": "date",
+                                        "example": "2020-09-28 10:00:00"
+                                    },
+                                    "aliquota_iva": {
+                                        "type": "number",
+                                        "format": "number",
+                                        "example": "22"
+                                    },
+                                    "totale": {
+                                        "type": "number",
+                                        "format": "number",
+                                        "example": "1000"
+                                    },
+                                    "data_prenotazione": {
+                                        "type": "date",
+                                        "format": "date",
+                                        "example": "2020-09-28 10:00:00"
+                                    },
+                                    "note": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "note"
+                                    },
+                                    "status": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "S"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User created"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address or password. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/prenotazione": {
             "post": {
                 "tags": [

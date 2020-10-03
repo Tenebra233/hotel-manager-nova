@@ -1,1 +1,1 @@
-Hotel Manager built in Laravel Nova
+Hotel Manager built in Laravel NovaCommmit test 2 ripristinato

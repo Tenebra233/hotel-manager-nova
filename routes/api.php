@@ -27,3 +27,5 @@ Route::delete('users/{user}', 'UserController@delete');
 Route::post('prenotazione', 'PrenotazioneController@store');
 Route::post('fattura', 'FatturaController@store');
 Route::get('date', 'DateController@index');
+
+Route::post('flusso-prenotazione', 'FlussoPrenotazioneController@flussoPrenotazione');
