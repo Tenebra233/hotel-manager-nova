@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 /**
  * @OA\Post(
  * path="/api/prenotazione",
- * summary="Crea una prenotazione",
+ * summary="Crea  una prenotazione",
  * description="Crea una fattura con la fattura associata",
  * operationId="createPrenotazione",
  * tags={"prenotazione"},
