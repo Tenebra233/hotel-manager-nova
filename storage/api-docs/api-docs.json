@@ -1,0 +1,264 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Albergo Manager API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/date": {
+            "get": {
+                "tags": [
+                    "dateDisponibili"
+                ],
+                "summary": "Mostra date disponibili per prenotazioni frontend",
+                "description": "Mostra date disponibili per prenotazioni frontend",
+                "operationId": "showAvailableDates",
+                "requestBody": {
+                    "required": false
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success"
+                    },
+                    "422": {
+                        "description": "No dates available"
+                    }
+                }
+            }
+        },
+        "/api/fattura": {
+            "post": {
+                "tags": [
+                    "fattura"
+                ],
+                "summary": "Crea una fattura",
+                "description": "Crea una fattura con il cliente associato",
+                "operationId": "createFattura",
+                "requestBody": {
+                    "description": "Dettagli fattura",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "cliente",
+                                    "data",
+                                    "iva",
+                                    "totale"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "number",
+                                        "example": "1"
+                                    },
+                                    "data": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "aliquota_iva": {
+                                        "type": "number"
+                                    },
+                                    "totale": {
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Fattura creata"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address or password. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/prenotazione": {
+            "post": {
+                "tags": [
+                    "prenotazione"
+                ],
+                "summary": "Crea una prenotazione",
+                "description": "Crea una fattura con la fattura associata",
+                "operationId": "createPrenotazione",
+                "requestBody": {
+                    "description": "Dettagli prenotazione",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "data_prenotazione",
+                                    "note",
+                                    "status",
+                                    "fattura_id"
+                                ],
+                                "properties": {
+                                    "note": {
+                                        "type": "string",
+                                        "example": "note..."
+                                    },
+                                    "data_prenotazione": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "status": {
+                                        "type": "string",
+                                        "example": "S"
+                                    },
+                                    "fattura_id": {
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Prenotazione creata"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address or password. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "post": {
+                "tags": [
+                    "register"
+                ],
+                "summary": "Create an user",
+                "description": "Create an user with name, email and password",
+                "operationId": "registerUser",
+                "requestBody": {
+                    "description": "User info",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "roberto"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "user1@mail.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "PassWord12345"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User created"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Wrong credentials response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, wrong email address or password. Please try again"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
