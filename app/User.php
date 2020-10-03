@@ -47,7 +47,7 @@ class User extends Authenticatable
     }
 
     public function fattura(){
-        return $this->hasMany(Fattura::class, 'test');
+        return $this->hasMany(Fattura::class, 'user_id');
     }
 
 
