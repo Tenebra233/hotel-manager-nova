@@ -41,15 +41,13 @@ class User extends Authenticatable
 
 
 
-
-
     public function user()
     {
         return $this->hasMany(Ordine::class, 'ordine_id');
     }
 
     public function fattura(){
-        return $this->hasMany(Fattura::class, 'user_id');
+        return $this->hasMany(Fattura::class, 'test');
     }
 
 
