@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
  * @OA\Post(
  * path="/api/flusso-prenotazione",
  * summary="Create an user",
- * description="Create an user with name, email and password",
+ * description="Crea un utente, una fattura ed una prenotazione tutti collegati",
  * operationId="flussoPrenotazione",
  * tags={"flussoPrenotazione"},
  * @OA\RequestBody(
@@ -26,7 +26,9 @@ use Illuminate\Http\Request;
  *      @OA\Property(property="data", type="date", format="date", example="2020-09-28 10:00:00"),
  *      @OA\Property(property="aliquota_iva", type="number", format="number", example="22"),
  *      @OA\Property(property="totale", type="number", format="number", example="1000"),
- *      @OA\Property(property="data_prenotazione", type="date", format="date", example="2020-09-28 10:00:00"),
+ *      @OA\Property(property="data_prenotazione", type="string", format="string", example="2020-09-28 10:00:00"),
+ *      @OA\Property(property="data_da", type="string", format="string", example="2020-09-28 10:00:00"),
+ *      @OA\Property(property="data_a", type="string", format="string", example="2020-09-28 10:00:00"),
  *      @OA\Property(property="note", type="string", format="string", example="note"),
  *      @OA\Property(property="status", type="string", format="string", example="S"),
  *
@@ -34,16 +36,16 @@ use Illuminate\Http\Request;
  * ),
  *     *   @OA\Response(
  *     response=201,
- *     description="Success",
+ *     description="Successo",
  *     @OA\JsonContent(
- *        @OA\Property(property="message", type="string", example="User created"),
+ *        @OA\Property(property="message", type="string", example="Prenotazione avvenuta con successo"),
  *     )
  *  ),
  * @OA\Response(
  *    response=422,
- *    description="Wrong credentials response",
+ *    description="Errore",
  *    @OA\JsonContent(
- *       @OA\Property(property="message", type="string", example="Sorry, wrong email address or password. Please try again")
+ *       @OA\Property(property="message", type="string", example="Prenotazione non effettuata")
  *        )
  *     )
  * )

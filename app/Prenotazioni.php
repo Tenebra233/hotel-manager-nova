@@ -13,11 +13,13 @@ class Prenotazioni extends Model
     use HasAccessControl;
 
     protected $fillable = [
-        'note', 'status', 'fattura_id', 'data_prenotazione'
+        'note', 'status', 'fattura_id', 'data_prenotazione', 'data_da', 'data_a'
     ];
 
     protected $casts = [
         'data_prenotazione' => 'date',
+        'data_da' => 'date',
+        'data_a' => 'date',
     ];
 
     public function stanza()

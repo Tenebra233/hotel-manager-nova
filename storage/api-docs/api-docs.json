@@ -109,7 +109,7 @@
                     "flussoPrenotazione"
                 ],
                 "summary": "Create an user",
-                "description": "Create an user with name, email and password",
+                "description": "Crea un utente, una fattura ed una prenotazione tutti collegati",
                 "operationId": "flussoPrenotazione",
                 "requestBody": {
                     "description": "User info",
@@ -153,8 +153,18 @@
                                         "example": "1000"
                                     },
                                     "data_prenotazione": {
-                                        "type": "date",
-                                        "format": "date",
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "2020-09-28 10:00:00"
+                                    },
+                                    "data_da": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "2020-09-28 10:00:00"
+                                    },
+                                    "data_a": {
+                                        "type": "string",
+                                        "format": "string",
                                         "example": "2020-09-28 10:00:00"
                                     },
                                     "note": {
@@ -175,14 +185,14 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Success",
+                        "description": "Successo",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "User created"
+                                            "example": "Prenotazione avvenuta con successo"
                                         }
                                     },
                                     "type": "object"
@@ -191,14 +201,14 @@
                         }
                     },
                     "422": {
-                        "description": "Wrong credentials response",
+                        "description": "Errore",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Sorry, wrong email address or password. Please try again"
+                                            "example": "Prenotazione non effettuata"
                                         }
                                     },
                                     "type": "object"

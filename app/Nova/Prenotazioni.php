@@ -52,7 +52,9 @@ class Prenotazioni extends Resource
         return [
 //            AccessControl::make(),
             ID::make()->sortable(),
-            Date::make('Data Prenotazione', 'data_prenotazione')->format('MM-DD-YYYY'),
+            Date::make('Data Prenotazione', 'data_prenotazione')->format('DD-MM-YYYY'),
+            Date::make('Dal', 'data_da')->format('DD-MM-YYYY'),
+            Date::make('Al', 'data_a')->format('DD-MM-YYYY'),
             Textarea::make('Note', 'note'),
             Select::make('Stato', 'status')->options([
                 'S' => 'Inviato',
